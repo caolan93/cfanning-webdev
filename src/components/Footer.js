@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
 	appbar: {
 		top: "auto",
 		bottom: "0",
+		color: theme.palette.secondary.main,
 	},
 	menu: {
 		display: "none",
 		[theme.breakpoints.down("sm")]: {
 			display: "flex",
 			marginLeft: "auto",
-			color: "inherit",
 		},
 	},
 	tabs: {

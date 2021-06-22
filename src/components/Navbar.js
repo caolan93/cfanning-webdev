@@ -16,7 +16,6 @@ import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutline
 import ComputerIcon from "@material-ui/icons/Computer";
 
 const useStyles = makeStyles((theme) => ({
-	appbar: {},
 	menu: {
 		display: "none",
 		[theme.breakpoints.down("sm")]: {
@@ -33,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	link: {
 		textDecoration: "none",
-		color: theme.palette.secondary.main,
 	},
 	tab: {
 		display: "flex",
@@ -67,6 +65,7 @@ const Navbar = () => {
 							<Tab
 								className={classes.tab}
 								icon={<FolderOpenIcon />}
+								color='#fff'
 								label='Projects'
 							/>
 						</Link>

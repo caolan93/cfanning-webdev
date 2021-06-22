@@ -6,8 +6,9 @@ import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import TechnologiesPage from "./pages/TechnologiesPage";
+import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core";
 
 const theme = createMuiTheme({
 	palette: {
@@ -20,11 +21,19 @@ const theme = createMuiTheme({
 	},
 });
 
+const useStyles = makeStyles((theme) => ({
+	divider: {
+		backgroundColor: "#F0EDEE",
+	},
+}));
+
 function App() {
+	const classes = useStyles();
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>
 				<Navbar />
+				<Divider className={classes.divider} />
 				<Switch>
 					<Route exact path='/'>
 						<HomePage />
