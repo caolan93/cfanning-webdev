@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down("sm")]: {
 			display: "flex",
 			marginLeft: "auto",
-			color: "inherit",
 		},
 	},
 	tabs: {
@@ -32,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	link: {
 		textDecoration: "none",
+		color: "inherit",
 	},
 	tab: {
 		display: "flex",
@@ -56,7 +56,7 @@ const Navbar = () => {
 			<Toolbar disableGutters>
 				<Grid className={classes.container} container lg={10}>
 					<Link to='/' className={classes.link}>
-						<Typography variant='h4' color='secondary'>
+						<Typography className={classes.typography} variant='h4'>
 							Portfolio
 						</Typography>
 					</Link>
@@ -73,6 +73,7 @@ const Navbar = () => {
 							<Tab
 								className={classes.tab}
 								icon={<ComputerIcon />}
+								color='#fff'
 								label='Technologies'
 							/>
 						</Link>

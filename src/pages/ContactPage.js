@@ -3,7 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
+import SendIcon from "@material-ui/icons/Send";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
@@ -11,31 +12,27 @@ import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 
 const useStyles = makeStyles((theme) => ({
-	grid: {
+	container: {
+		height: "calc(100vh - 200px)",
+	},
+	contactForm: {
+		width: "100%",
+		margin: "auto",
+	},
+	contactDetails: {
 		margin: "0 auto",
-		height: "calc(100vh - 136px)",
-		backgroundColor: theme.palette.primary.main,
+		backgroundColor: "#F1F1F1",
 	},
-	informationGrid: {
-		margin: "0 auto",
-		backgroundColor: "pink",
-		color: theme.palette.secondary.main,
+	informationDetails: {
+		marginBottom: "15px",
 	},
-	getInTouch: {
-		margin: "20px",
-		color: theme.palette.secondary.main,
+	contactIcons: {
+		marginRight: "20px",
+		fontSize: "30px",
 	},
-	detailsGrid: {
-		margin: "0 auto",
-		color: theme.palette.secondary.main,
-	},
-	contactGrid: {
+	test: {
+		margin: "20px 0",
 		backgroundColor: "blue",
-		color: theme.palette.secondary.main,
-	},
-	icons: {
-		fontSize: "2.125rem",
-		color: theme.palette.secondary.main,
 	},
 }));
 
@@ -43,41 +40,117 @@ const ContactPage = () => {
 	const classes = useStyles();
 
 	return (
-		<Grid className={classes.grid} container lg={10} xl={10}>
-			<Grid item lg={12}>
-				<Typography className={classes.getInTouch} variant='h3' align='center'>
-					Get In Touch!
-				</Typography>
-			</Grid>
-			<Grid item container lg={6}>
-				<Grid className={classes.detailsGrid} item container md={8} spacing={2}>
-					<Grid item md={3}>
-						<PhoneIphoneOutlinedIcon className={classes.icons} />
-					</Grid>
-					<Grid item md={9}>
+		<Grid className={classes.container} container justify='center'>
+			<Grid item container md={4} direction='column'>
+				<Grid item className={classes.test}>
+					<Typography align='center' variant='h2'>
+						Contact Information
+					</Typography>
+				</Grid>
+				<Grid
+					className={classes.contactDetails}
+					item
+					container
+					direction='column'
+					md={10}>
+					<Grid
+						className={classes.informationDetails}
+						item
+						container
+						alignItems='center'>
+						<PhoneIphoneOutlinedIcon className={classes.contactIcons} />
 						<Typography variant='h5'>+(353)-83-177-9545</Typography>
 					</Grid>
-					<Grid item md={3}>
-						<EmailOutlinedIcon className={classes.icons} />
-					</Grid>
-					<Grid item md={9}>
+					<Grid
+						className={classes.informationDetails}
+						item
+						container
+						alignItems='center'>
+						<EmailOutlinedIcon className={classes.contactIcons} />
 						<Typography variant='h5'>caolan.fanning@gmail.com</Typography>
 					</Grid>
-					<Grid item md={3}>
-						<LocationOnOutlinedIcon className={classes.icons} />
-					</Grid>
-					<Grid item md={9}>
+					<Grid
+						className={classes.informationDetails}
+						item
+						container
+						alignItems='flex-baseline'>
 						<Grid item>
-							<Typography variant='h5'>Dúnáras,</Typography>
-							<Typography variant='h5'>Whitehall Road,</Typography>
-							<Typography variant='h5'>Churchtown Dublin 14.</Typography>
+							<LocationOnOutlinedIcon className={classes.contactIcons} />
+						</Grid>
+						<Grid item>
+							<Grid item container direction='column'>
+								<Typography variant='h5'>Dunaras,</Typography>
+								<Typography variant='h5'>Whitehall Road,</Typography>
+								<Typography variant='h5'>Churchtown,</Typography>
+								<Typography variant='h5'>Dublin 14.</Typography>
+							</Grid>
 						</Grid>
 					</Grid>
 				</Grid>
 			</Grid>
-			<Grid item container lg={6}>
-				<Grid item direction='column' container lg={10} justify='space-around'>
-					<FormControl></FormControl>
+			<Grid item container md={4}>
+				<Grid item container direction='column'>
+					<Grid item className={classes.test}>
+						<Typography align='center' variant='h2'>
+							Leave a message!
+						</Typography>
+					</Grid>
+					<Grid
+						className={classes.contactForm}
+						item
+						container
+						direction='column'
+						md={10}
+						spacing={1}>
+						<Grid item>
+							<TextField
+								fullWidth
+								id='name'
+								required
+								variant='outlined'
+								label='Name'
+							/>
+						</Grid>
+						<Grid item>
+							<TextField
+								fullWidth
+								id='email'
+								required
+								variant='outlined'
+								label='Email'
+							/>
+						</Grid>
+						<Grid item>
+							<TextField
+								fullWidth
+								id='phone'
+								required
+								variant='outlined'
+								label='Phone'
+							/>
+						</Grid>
+						<Grid item>
+							<TextField
+								fullWidth
+								variant='outlined'
+								required
+								id='message'
+								multiline
+								rows={10}
+								label='Message'
+							/>
+						</Grid>
+						<Grid item>
+							<Button
+								fullWidth
+								variant='contained'
+								color='primary'
+								disableElevation
+								endIcon={<SendIcon />}>
+								Send
+							</Button>
+						</Grid>
+					</Grid>
 				</Grid>
 			</Grid>
 		</Grid>

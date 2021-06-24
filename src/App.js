@@ -10,22 +10,9 @@ import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core";
 
-const theme = createMuiTheme({
-	palette: {
-		primary: {
-			main: "#0A090C",
-		},
-		secondary: {
-			main: "#F0EDEE",
-		},
-	},
-});
+const theme = createMuiTheme({});
 
-const useStyles = makeStyles((theme) => ({
-	divider: {
-		backgroundColor: "#F0EDEE",
-	},
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 function App() {
 	const classes = useStyles();
@@ -33,7 +20,6 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<Router>
 				<Navbar />
-				<Divider className={classes.divider} />
 				<Switch>
 					<Route exact path='/'>
 						<HomePage />
