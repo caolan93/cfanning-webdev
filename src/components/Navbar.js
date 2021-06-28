@@ -51,6 +51,7 @@ const Navbar = () => {
 		<AppBar
 			className={classes.appbar}
 			elevation={0}
+			color='primary'
 			position='static'
 			disableElevation>
 			<Toolbar disableGutters>

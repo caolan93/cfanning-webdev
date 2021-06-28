@@ -12,7 +12,13 @@ import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core";
 
 const theme = createMuiTheme({});
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+	palette: {
+		primary: {
+			main: "rgba(30,30,30)",
+		},
+	},
+}));
 
 function App() {
 	const classes = useStyles();

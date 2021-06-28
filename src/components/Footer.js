@@ -34,41 +34,7 @@ const Footer = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 
-	return (
-		<Grid className={classes.footer} container justify='center'>
-			<Grid item container md={2}>
-				<Grid item container>
-					<PhoneIphoneOutlinedIcon />
-					<Typography>+(353)-83-177-9545</Typography>
-				</Grid>
-				<Grid item container>
-					<EmailOutlinedIcon />
-					<Typography>caolan.fanning@gmail.com</Typography>
-				</Grid>
-			</Grid>
-
-			<Grid item container md={2} direction='column'>
-				<LocationOnOutlinedIcon />
-				<Grid item md={6} container direction='column'>
-					<Typography>Dunaras,</Typography>
-					<Typography>Whitehall Road,</Typography>
-					<Typography>Churchtown,</Typography>
-					<Typography>Dublin 14.</Typography>
-				</Grid>
-			</Grid>
-			<Grid item container md={2}>
-				<Grid item>
-					<GitHubIcon />
-				</Grid>
-				<Grid item>
-					<LinkedInIcon />
-				</Grid>
-				<Grid item>
-					<TwitterIcon />
-				</Grid>
-			</Grid>
-		</Grid>
-	);
+	return <Grid className={classes.footer} container justify='center'></Grid>;
 };
 
 export default Footer;
