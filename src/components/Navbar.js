@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,32 +14,22 @@ import FolderOpenIcon from "@material-ui/icons/FolderOpen";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
 import ComputerIcon from "@material-ui/icons/Computer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 const useStyles = makeStyles((theme) => ({
-	menu: {
-		display: "none",
-		[theme.breakpoints.down("sm")]: {
-			display: "flex",
-			marginLeft: "auto",
-		},
-	},
-	tabs: {
-		marginLeft: "auto",
+	navigation: {
 		[theme.breakpoints.down("sm")]: {
 			display: "none",
 		},
 	},
+	menuButton: {
+		[theme.breakpoints.up("md")]: {
+			display: "none",
+		},
+	},
 	link: {
-		textDecoration: "none",
 		color: "inherit",
-	},
-	tab: {
-		display: "flex",
-	},
-	container: {
-		margin: "auto",
-		justifyContent: "center",
-		alignItems: "center",
+		textDecoration: "none",
 	},
 }));
 
@@ -47,58 +37,45 @@ const Navbar = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 
+	const [drawer, setDrawer] = useState(false);
+	const [selectedTab, setSelectedTab] = useState(0);
+
+	const handleDrawerOpen = () => {
+		setDrawer(!drawer);
+	};
+
+	const handleChange = (e, newValue) => {
+		setSelectedTab(newValue);
+	};
+
+	console.log(drawer);
 	return (
-		<AppBar
-			className={classes.appbar}
-			elevation={0}
-			color='primary'
-			position='static'
-			disableElevation>
-			<Toolbar disableGutters>
-				<Grid className={classes.container} container lg={10}>
-					<Link to='/' className={classes.link}>
-						<Typography className={classes.typography} variant='h4'>
-							Portfolio
-						</Typography>
-					</Link>
-					<Tabs className={classes.tabs}>
-						<Link to='/projects' className={classes.link}>
-							<Tab
-								className={classes.tab}
-								icon={<FolderOpenIcon />}
-								color='#fff'
-								label='Projects'
-							/>
-						</Link>
-						<Link to='/technologies' className={classes.link}>
-							<Tab
-								className={classes.tab}
-								icon={<ComputerIcon />}
-								color='#fff'
-								label='Technologies'
-							/>
-						</Link>
-						<Link to='/about' className={classes.link}>
-							<Tab
-								className={classes.tab}
-								icon={<InfoOutlinedIcon />}
-								label='About'
-							/>
-						</Link>
-						<Link to='/contact' className={classes.link}>
-							<Tab
-								className={classes.tab}
-								icon={<ContactSupportOutlinedIcon />}
-								label='Contact'
-							/>
-						</Link>
-					</Tabs>
-					<IconButton className={classes.menu}>
-						<MenuIcon />
-					</IconButton>
-				</Grid>
-			</Toolbar>
-		</AppBar>
+		<>
+			<AppBar position='static'>
+				<Toolbar>
+					<Grid container alignItems='center' justify='space-between'>
+						<Grid item>
+							<Link className={classes.link} to='/'>
+								<Typography variant='h5'>Caolan Fanning WebDev</Typography>
+							</Link>
+						</Grid>
+						<Grid className={classes.navigation} item>
+							<Grid container spacing={3}>
+								<Tabs value={selectedTab} onChange={handleChange}>
+									<Tab component={Link} to='/' label='Home' />
+									<Tab component={Link} to='/projects' label='Projects' />
+									<Tab component={Link} to='/about' label='About' />
+									<Tab component={Link} to='/contact' label='Contact' />
+								</Tabs>
+							</Grid>
+						</Grid>
+						<Grid className={classes.menuButton} item>
+							<MenuIcon onClick={handleDrawerOpen} />
+						</Grid>
+					</Grid>
+				</Toolbar>
+			</AppBar>
+		</>
 	);
 };
 

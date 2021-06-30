@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import TechnologiesPage from "./pages/TechnologiesPage";
 import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core";
@@ -33,9 +32,7 @@ function App() {
 					<Route exact path='/projects'>
 						<ProjectsPage />
 					</Route>
-					<Route exact path='/technologies'>
-						<TechnologiesPage />
-					</Route>
+
 					<Route exact path='/about'>
 						<AboutPage />
 					</Route>
