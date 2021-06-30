@@ -14,15 +14,11 @@ import { Twitter } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	footer: {
-		height: "100px",
-		color: "#fff",
 		backgroundColor: theme.palette.primary.main,
-		[theme.breakpoints.down("md")]: {
-			height: "70px",
-		},
-		[theme.breakpoints.down("sm")]: {
-			height: "60px",
-		},
+		color: "#fff",
+	},
+	gridContainer: {
+		margin: "20px auto",
 	},
 	socialIcons: {
 		height: "45px",
@@ -34,7 +30,108 @@ const Footer = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 
-	return <Grid className={classes.footer} container justify='center'></Grid>;
+	return (
+		<Grid className={classes.footer} container xs={12}>
+			<Grid
+				className={classes.gridContainer}
+				item
+				container
+				justify='center'
+				xs={12}
+				md={10}>
+				<Grid item container xs={12} md={3}>
+					<Grid item container alignItems='center' direction='column'>
+						<Grid item>
+							<PhoneIphoneOutlinedIcon />
+						</Grid>
+						<Grid item>
+							<Typography variant='subtitle'>+(353)83-177-9545</Typography>
+						</Grid>
+					</Grid>
+					<Grid item container alignItems='center' direction='column'>
+						<Grid item>
+							<EmailOutlinedIcon />
+						</Grid>
+						<Grid item>
+							<Typography variant='subtitle'>
+								caolan.fanning@gmail.com
+							</Typography>
+						</Grid>
+					</Grid>
+				</Grid>
+				<Grid item container xs={12} md={3}>
+					<Grid item container justify='center'>
+						<Grid item>
+							<LocationOnOutlinedIcon />
+						</Grid>
+						<Grid item container style={{ width: "auto" }} direction='column'>
+							<Grid item>
+								<Typography variant='subtitle'>Dunaras,</Typography>
+							</Grid>
+							<Grid item>
+								<Typography variant='subtitle'>Whitehall Road,</Typography>
+							</Grid>
+							<Grid item>
+								<Typography variant='subtitle'>Churchtown,</Typography>
+							</Grid>
+							<Grid item>
+								<Typography variant='subtitle'>Dublin 14.</Typography>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Grid>
+				<Grid item container justify='center' xs={12} md={3} spacing={2}>
+					<Grid item>
+						<GitHubIcon className={classes.socialIcons} />
+					</Grid>
+					<Grid item>
+						<Twitter className={classes.socialIcons} />
+					</Grid>
+					<Grid item>
+						<LinkedInIcon className={classes.socialIcons} />
+					</Grid>
+				</Grid>
+				<Grid item container justify='center' xs={12}>
+					<Typography variant='body1'>All Rights Reserved &copy;</Typography>
+				</Grid>
+			</Grid>
+		</Grid>
+	);
 };
 
 export default Footer;
+
+{
+	/* <Grid item container>
+
+</Grid>
+<Grid item container>
+<Grid item alignItems='center'>
+	<EmailOutlinedIcon />
+</Grid>
+<Grid item alignItems='baseline'>
+	<Grid item container direction='column'>
+		<Grid item>
+			<Typography variant='subtitle'>Dunaras,</Typography>
+		</Grid>
+		<Grid item>
+			<Typography variant='subtitle'>Whitehall Road,</Typography>
+		</Grid>
+		<Grid item>
+			<Typography variant='subtitle'>Churchtown,</Typography>
+		</Grid>
+		<Grid item>
+			<Typography variant='subtitle'>Dublin 14</Typography>
+		</Grid>
+	</Grid>
+</Grid>
+</Grid>
+<Grid item container>
+<Grid item alignItems='center'>
+	<LocationOnOutlinedIcon />
+</Grid>
+<Grid item>
+	<Typography variant='subtitle'>caolan.fanning@gmail.com</Typography>
+</Grid>
+</Grid> */
+}
