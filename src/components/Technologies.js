@@ -1,15 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import MenuIcon from "@material-ui/icons/Menu";
-import IconButton from "@material-ui/core/IconButton";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import { useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import cssLogo from "../images/css.png";
 import expressLogo from "../images/express.png";
@@ -51,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Technologies = () => {
 	const classes = useStyles();
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down("xs"));
+
+	console.log(matches);
+
 	return (
 		<Grid className={classes.container} container md={10}>
 			<Grid className={classes.container} container md={10}>
@@ -62,7 +61,10 @@ const Technologies = () => {
 						sm={6}
 						justify='center'
 						alignItems='center'>
-						<Typography style={{ padding: "10px" }} variant='body1'>
+						<Typography
+							style={{ padding: "10px" }}
+							align={matches ? "center" : "left"}
+							variant='body1'>
 							When I began my web development journey I started with the core
 							technogolies of HTML, CSS, and JavaScript. <br /> From there, as I
 							gained confidence and experience (using these technogolies) I
@@ -145,8 +147,8 @@ const Technologies = () => {
 								<Grid item container justify='center' xs={4}>
 									<img
 										className={classes.techIcons}
-										src={npmLogo}
-										alt='npm logo'
+										src={reduxLogo}
+										alt='redux logo'
 									/>
 								</Grid>
 								<Grid item container justify='center' xs={4}>

@@ -38,49 +38,9 @@ const Footer = () => {
 				container
 				justify='center'
 				xs={12}
-				md={10}>
-				<Grid item container xs={12} md={3}>
-					<Grid item container alignItems='center' direction='column'>
-						<Grid item>
-							<PhoneIphoneOutlinedIcon />
-						</Grid>
-						<Grid item>
-							<Typography variant='subtitle'>+(353)83-177-9545</Typography>
-						</Grid>
-					</Grid>
-					<Grid item container alignItems='center' direction='column'>
-						<Grid item>
-							<EmailOutlinedIcon />
-						</Grid>
-						<Grid item>
-							<Typography variant='subtitle'>
-								caolan.fanning@gmail.com
-							</Typography>
-						</Grid>
-					</Grid>
-				</Grid>
-				<Grid item container xs={12} md={3}>
-					<Grid item container justify='center'>
-						<Grid item>
-							<LocationOnOutlinedIcon />
-						</Grid>
-						<Grid item container style={{ width: "auto" }} direction='column'>
-							<Grid item>
-								<Typography variant='subtitle'>Dunaras,</Typography>
-							</Grid>
-							<Grid item>
-								<Typography variant='subtitle'>Whitehall Road,</Typography>
-							</Grid>
-							<Grid item>
-								<Typography variant='subtitle'>Churchtown,</Typography>
-							</Grid>
-							<Grid item>
-								<Typography variant='subtitle'>Dublin 14.</Typography>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Grid>
-				<Grid item container justify='center' xs={12} md={3} spacing={2}>
+				md={10}
+				spacing={2}>
+				<Grid item container justify='center' xs={12} spacing={2}>
 					<Grid item>
 						<GitHubIcon className={classes.socialIcons} />
 					</Grid>

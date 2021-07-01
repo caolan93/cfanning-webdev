@@ -14,14 +14,15 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
-		height: "90vh",
+		backgroundColor: "#f3f3f3",
 		margin: "auto",
 	},
 	contactContainer: {
 		margin: "20px",
 		backgroundColor: "#fff",
 	},
-	paper: {},
+	container1: { backgroundColor: "red" },
+	container2: { backgroundColor: "blue" },
 }));
 
 const ContactPage = () => {
@@ -34,79 +35,110 @@ const ContactPage = () => {
 	const [message, setMessage] = useState("");
 
 	return (
-		<Grid className={classes.container} container md={10}>
-			<Grid container md={12}>
-				<Grid
-					item
-					container
-					alignItems='center'
-					justify='center'
-					style={{ margin: "auto" }}
-					sm={10}
-					lg={8}
-					xl={6}>
-					<Grid item container spacing={1}>
+		<Grid className={classes.container} container xs={12} md={10}>
+			<Grid container style={{ margin: "50px 0" }}>
+				<Grid item container direction='column' xs={12} md={6}>
+					<Grid
+						item
+						xs={12}
+						container
+						style={{ padding: "0 10px" }}
+						spacing={1}>
 						<Grid item xs={12}>
 							<Typography align='center' variant='h4'>
 								Get In Touch!
 							</Typography>
 						</Grid>
+
+						<Grid item container xs={12}>
+							<Grid item xs={3}>
+								<PhoneIphoneOutlinedIcon />
+							</Grid>
+							<Grid item={9}>
+								<Typography variant='h6'>+(353)83-177-9545</Typography>
+							</Grid>
+						</Grid>
+						<Grid item container xs={12}>
+							<Grid item xs={3}>
+								<EmailOutlinedIcon />
+							</Grid>
+							<Grid item={9}>
+								<Typography variant='h6'>caolan.fanning@gmail.com</Typography>
+							</Grid>
+						</Grid>
+						<Grid item container xs={12}>
+							<Grid item xs={3}>
+								<LocationOnOutlinedIcon />
+							</Grid>
+							<Grid item={9}>
+								<Typography variant='h6'>
+									Dúnáras, <br />
+									Whitehall Road, <br /> Churchtown <br /> Dublin 14.
+								</Typography>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Grid>
+				<Grid item container direction='column' xs={12} md={6}>
+					<Grid item container style={{ padding: "0 10px" }} spacing={1}>
+						<Grid item xs={12}>
+							<Typography align='center' variant='h4'>
+								Send A Message!
+							</Typography>
+						</Grid>
 						<Grid item xs={12} sm={6}>
 							<TextField
-								value={firstName}
-								onChange={(e) => (setFirstName = e.target.value)}
-								fullWidth
 								label='First Name'
+								value={firstName}
+								onChange={(e) => setFirstName(e.target.value)}
 								variant='outlined'
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={12} sm={6}>
 							<TextField
-								value={lastName}
-								onChange={(e) => (setLastName = e.target.value)}
-								fullWidth
 								label='Last Name'
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
 								variant='outlined'
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
-								value={email}
-								onChange={(e) => (setEmail = e.target.value)}
-								fullWidth
-								label='Email'
-								variant='outlined'
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								value={phone}
-								onChange={(e) => (setPhone = e.target.value)}
-								fullWidth
 								label='Phone'
+								value={phone}
+								onChange={(e) => setPhone(e.target.value)}
 								variant='outlined'
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<TextField
-								value={message}
-								onChange={(e) => (setMessage = e.target.value)}
-								fullWidth
-								multiline
-								rows={10}
-								label='Message'
+								label='Email'
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								variant='outlined'
+								fullWidth
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								label='Message'
+								multiline
+								rows={8}
+								value={message}
+								onChange={(e) => setMessage(e.target.value)}
+								variant='outlined'
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={12}>
 							<Button
-								type='submit'
-								color='primary'
 								fullWidth
-								multiline
-								rows={10}
-								endIcon={<SendIcon />}
-								variant='contained'>
+								variant='contained'
+								color='primary'
+								endIcon={<SendIcon />}>
 								Send
 							</Button>
 						</Grid>

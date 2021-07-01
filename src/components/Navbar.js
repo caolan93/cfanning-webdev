@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
 	const classes = useStyles();
 	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const [drawer, setDrawer] = useState(false);
 	const [selectedTab, setSelectedTab] = useState(0);
@@ -48,7 +50,6 @@ const Navbar = () => {
 		setSelectedTab(newValue);
 	};
 
-	console.log(drawer);
 	return (
 		<>
 			<AppBar position='static'>
@@ -56,7 +57,9 @@ const Navbar = () => {
 					<Grid container alignItems='center' justify='space-between'>
 						<Grid item>
 							<Link className={classes.link} to='/'>
-								<Typography variant='h5'>Caolan Fanning WebDev</Typography>
+								<Typography variant='h5'>
+									{matches ? "CF WebDev" : "Caolan Fanning WebDev"}
+								</Typography>
 							</Link>
 						</Grid>
 						<Grid className={classes.navigation} item>
