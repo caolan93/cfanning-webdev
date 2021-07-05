@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: "20px auto",
 	},
 	socialIcons: {
+		color: "#fff",
 		height: "45px",
 		width: "45px",
 	},
@@ -42,13 +43,28 @@ const Footer = () => {
 				spacing={2}>
 				<Grid item container justify='center' xs={12} spacing={2}>
 					<Grid item>
-						<GitHubIcon className={classes.socialIcons} />
+						<Link
+							to={{ pathname: "https://github.com/caolan93" }}
+							target='_blank'>
+							<GitHubIcon className={classes.socialIcons} />
+						</Link>
 					</Grid>
 					<Grid item>
-						<Twitter className={classes.socialIcons} />
+						<Link
+							to={{ pathname: "https://twitter.com/CaolanFanning" }}
+							target='_blank'>
+							<TwitterIcon className={classes.socialIcons} />
+						</Link>
 					</Grid>
 					<Grid item>
-						<LinkedInIcon className={classes.socialIcons} />
+						<Link
+							to={{
+								pathname:
+									"https://www.linkedin.com/in/caolan-fanning-1a7229157/",
+							}}
+							target='_blank'>
+							<LinkedInIcon className={classes.socialIcons} />
+						</Link>
 					</Grid>
 				</Grid>
 				<Grid item container justify='center' xs={12}>

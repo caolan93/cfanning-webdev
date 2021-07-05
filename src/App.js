@@ -5,22 +5,24 @@ import HomePage from "./pages/HomePage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import Divider from "@material-ui/core/Divider";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
-const theme = createMuiTheme({});
-
-const useStyles = makeStyles((theme) => ({
+const theme = createMuiTheme({
 	palette: {
 		primary: {
 			main: "rgba(30,30,30)",
 		},
+		secondary: {
+			main: "#BB86FC",
+		},
 	},
-}));
+	typography: {
+		fontFamily: `'Poppins', sans-serif`,
+	},
+});
 
 function App() {
-	const classes = useStyles();
 	return (
 		<ThemeProvider theme={theme}>
 			<Router>

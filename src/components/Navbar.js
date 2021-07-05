@@ -1,83 +1,228 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import React, { useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import MenuIcon from "@material-ui/icons/Menu";
-import IconButton from "@material-ui/core/IconButton";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Grid from "@material-ui/core/Grid";
-import { useTheme } from "@material-ui/core/styles";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import FolderOpenIcon from "@material-ui/icons/FolderOpen";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
-import ComputerIcon from "@material-ui/icons/Computer";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import { useTheme } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Divider from "@material-ui/core/Divider";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
+import FolderRoundedIcon from "@material-ui/icons/FolderRounded";
+import ImportContactsRoundedIcon from "@material-ui/icons/ImportContactsRounded";
+import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
+
+function ElevationScroll(props) {
+	const { children, window } = props;
+	const trigger = useScrollTrigger({
+		disableHysteresis: true,
+		threshold: 0,
+		target: window ? window() : undefined,
+	});
+
+	return React.cloneElement(children, {
+		elevation: trigger ? 5 : 0,
+	});
+}
 
 const useStyles = makeStyles((theme) => ({
-	navigation: {
-		[theme.breakpoints.down("sm")]: {
-			display: "none",
-		},
+	appbar: {
+		zIndex: theme.zIndex.modal + 1,
 	},
-	menuButton: {
-		[theme.breakpoints.up("md")]: {
-			display: "none",
-		},
-	},
-	link: {
-		color: "inherit",
+	logo: {
 		textDecoration: "none",
+		color: "#fff",
+	},
+	menuIcon: {
+		fontWeight: 700,
+		color: "#fff",
+		marginLeft: "auto",
+	},
+	tabs: {
+		borderRadius: "3px",
+	},
+	drawer: {
+		[theme.breakpoints.down("xl")]: {
+			marginTop: "64px",
+		},
+		[theme.breakpoints.down("xs")]: {
+			marginTop: "56px",
+		},
+		backgroundColor: theme.palette.primary.main,
+	},
+	drawerItem: {
+		color: "#fff",
+	},
+	drawerIcon: {
+		padding: "3px",
+		backgroundColor: "#fff",
+		color: theme.palette.primary.main,
+		borderRadius: "50%",
+	},
+	divider: {
+		backgroundColor: "#fff",
 	},
 }));
 
 const Navbar = () => {
-	const classes = useStyles();
 	const theme = useTheme();
+	const classes = useStyles();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
-	const [drawer, setDrawer] = useState(false);
-	const [selectedTab, setSelectedTab] = useState(0);
+	const [value, setValue] = useState(0);
+	const [open, setOpen] = useState(false);
 
-	const handleDrawerOpen = () => {
-		setDrawer(!drawer);
+	const handleDrawerChange = () => {
+		setOpen(!open);
 	};
 
-	const handleChange = (e, newValue) => {
-		setSelectedTab(newValue);
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
 	};
+
+	useEffect(() => {
+		if (window.location.pathname === "/" && value !== 0) {
+			setValue(0);
+		} else if (window.location.pathname === "/projects" && value !== 1) {
+			setValue(1);
+		} else if (window.location.pathname === "/about" && value !== 2) {
+			setValue(2);
+		} else if (window.location.pathname === "/contact" && value !== 3) {
+			setValue(3);
+		}
+	}, [setValue, value]);
 
 	return (
 		<>
-			<AppBar position='static'>
-				<Toolbar>
-					<Grid container alignItems='center' justify='space-between'>
-						<Grid item>
-							<Link className={classes.link} to='/'>
-								<Typography variant='h5'>
-									{matches ? "CF WebDev" : "Caolan Fanning WebDev"}
-								</Typography>
-							</Link>
-						</Grid>
-						<Grid className={classes.navigation} item>
-							<Grid container spacing={3}>
-								<Tabs value={selectedTab} onChange={handleChange}>
-									<Tab component={Link} to='/' label='Home' />
-									<Tab component={Link} to='/projects' label='Projects' />
-									<Tab component={Link} to='/about' label='About' />
-									<Tab component={Link} to='/contact' label='Contact' />
-								</Tabs>
-							</Grid>
-						</Grid>
-						<Grid className={classes.menuButton} item>
-							<MenuIcon onClick={handleDrawerOpen} />
-						</Grid>
-					</Grid>
-				</Toolbar>
-			</AppBar>
+			<ElevationScroll>
+				<AppBar className={classes.appbar} position='sticky'>
+					<Toolbar>
+						<Typography
+							className={classes.logo}
+							component={Link}
+							to='/'
+							variant='h5'
+							onClick={() => setValue(0)}>
+							Caolan Fanning
+						</Typography>
+						{matches ? (
+							<IconButton
+								className={classes.menuIcon}
+								onClick={handleDrawerChange}>
+								<MenuIcon />
+							</IconButton>
+						) : (
+							<Tabs
+								value={value}
+								onChange={handleChange}
+								className={classes.menuIcon}>
+								<Tab
+									className={classes.tabs}
+									component={Link}
+									to='/'
+									label='Home'
+								/>
+								<Tab
+									className={classes.tabs}
+									component={Link}
+									to='/projects'
+									label='Projects'
+								/>
+								<Tab
+									className={classes.tabs}
+									component={Link}
+									to='/about'
+									label='About'
+								/>
+								<Tab
+									className={classes.tabs}
+									component={Link}
+									to='/contact'
+									label='Contact'
+								/>
+							</Tabs>
+						)}
+					</Toolbar>
+				</AppBar>
+			</ElevationScroll>
+			<SwipeableDrawer
+				classes={{ paper: classes.drawer }}
+				open={open}
+				onOpen={() => setOpen(true)}
+				onClose={() => setOpen(false)}>
+				<List disablePadding component='nav'>
+					<ListItem
+						component={Link}
+						to='/'
+						onClick={() => {
+							setOpen(false);
+							setValue(0);
+						}}
+						button
+						selected={value === 0}>
+						<ListItemIcon>
+							<HomeRoundedIcon className={classes.drawerIcon} />
+						</ListItemIcon>
+						<ListItemText className={classes.drawerItem} primary='Home' />
+					</ListItem>
+					<Divider className={classes.divider} />
+					<ListItem
+						component={Link}
+						to='/projects'
+						onClick={() => {
+							setOpen(false);
+							setValue(1);
+						}}
+						selected={value === 1}
+						button>
+						<ListItemIcon>
+							<FolderRoundedIcon className={classes.drawerIcon} />
+						</ListItemIcon>
+						<ListItemText className={classes.drawerItem} primary='Projects' />
+					</ListItem>
+					<Divider className={classes.divider} />
+					<ListItem
+						component={Link}
+						to='/about'
+						onClick={() => {
+							setOpen(false);
+							setValue(2);
+						}}
+						selected={value === 2}
+						button>
+						<ListItemIcon>
+							<AccountBoxRoundedIcon className={classes.drawerIcon} />
+						</ListItemIcon>
+						<ListItemText className={classes.drawerItem} primary='About' />
+					</ListItem>
+					<Divider className={classes.divider} />
+					<ListItem
+						component={Link}
+						to='/contact'
+						onClick={() => {
+							setOpen(false);
+							setValue(3);
+						}}
+						selected={value === 3}
+						button>
+						<ListItemIcon>
+							<ImportContactsRoundedIcon className={classes.drawerIcon} />
+						</ListItemIcon>
+						<ListItemText className={classes.drawerItem} primary='Contact' />
+					</ListItem>
+					<Divider className={classes.divider} />
+				</List>
+			</SwipeableDrawer>
 		</>
 	);
 };
