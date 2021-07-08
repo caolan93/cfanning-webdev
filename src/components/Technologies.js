@@ -28,9 +28,10 @@ const useStyles = makeStyles((theme) => ({
 	container: {
 		backgroundColor: "#F3F3F3",
 		margin: "0px auto",
+		height: "auto",
 	},
 	containerTwo: {
-		margin: "20px",
+		margin: "50px 0",
 	},
 	techIcons: {
 		objectFit: "contain",
@@ -39,6 +40,12 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down("sm")]: {
 			height: "45px",
 			width: "45px",
+		},
+	},
+	techGrid: {
+		marginBottom: "10px",
+		[theme.breakpoints.down("sm")]: {
+			marginBottom: "20px",
 		},
 	},
 }));
@@ -53,16 +60,18 @@ const Technologies = () => {
 	return (
 		<Grid className={classes.container} container md={10}>
 			<Grid className={classes.container} container md={10}>
-				<Grid className={classes.containerTwo} container spacing={2}>
+				<Grid className={classes.containerTwo} container>
 					<Grid
 						item
 						container
 						xs={12}
-						sm={6}
+						sm={10}
+						md={6}
+						style={{ margin: "0 auto" }}
 						justify='center'
 						alignItems='center'>
 						<Typography
-							style={{ padding: "10px" }}
+							style={{ margin: "10px 10px 20px 10px" }}
 							align={matches ? "center" : "left"}
 							variant='body1'>
 							When I began my web development journey I started with the core
@@ -82,31 +91,41 @@ const Technologies = () => {
 						item
 						container
 						xs={12}
-						sm={6}
+						md={6}
 						justify='center'
 						direction='column'>
-						<Grid container justify='center' spacing={3}>
-							<Grid
-								item
-								container
-								justify='center'
-								alignItems='center'
-								spacing={2}>
-								<Grid item container justify='center' xs={4}>
+						<Grid container justify='center'>
+							<Grid item container justify='center' alignItems='center'>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={htmlLogo}
 										alt='html logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={cssLogo}
 										alt='css logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={jsLogo}
@@ -114,21 +133,36 @@ const Technologies = () => {
 									/>
 								</Grid>
 
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={reactLogo}
 										alt='react logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={materialLogo}
 										alt='material logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={sassLogo}
@@ -136,43 +170,73 @@ const Technologies = () => {
 									/>
 								</Grid>
 							</Grid>
-							<Grid item container justify='center' spacing={2}>
-								<Grid item container justify='center' xs={4}>
+							<Grid item container justify='center'>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={framerLogo}
 										alt='framer logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={reduxLogo}
 										alt='redux logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={githubLogo}
 										alt='github logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={nodejsLogo}
 										alt='node js logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={expressLogo}
 										alt='express logo'
 									/>
 								</Grid>
-								<Grid item container justify='center' xs={4}>
+								<Grid
+									className={classes.techGrid}
+									item
+									container
+									justify='center'
+									xs={4}>
 									<img
 										className={classes.techIcons}
 										src={mongodbLogo}
