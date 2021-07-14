@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Footer from "./components/Footer";
+import Contactpage from "./pages/Contactpage";
 
 const theme = createMuiTheme({
 	palette: {
@@ -27,7 +29,11 @@ function App() {
 					<Route exact path='/'>
 						<Homepage />
 					</Route>
+					<Route exact path='/contact'>
+						<Contactpage />
+					</Route>
 				</Switch>
+				<Footer />
 			</Router>
 		</ThemeProvider>
 	);
