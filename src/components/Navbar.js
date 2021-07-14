@@ -86,7 +86,7 @@ const Navbar = () => {
 		setOpen(!open);
 	};
 
-	const handleChange = (event, newValue) => {
+	const handleChange = (e, newValue) => {
 		setValue(newValue);
 	};
 
@@ -146,24 +146,28 @@ const Navbar = () => {
 									component={Link}
 									to='/'
 									label='Home'
+									index={0}
 								/>
 								<Tab
 									className={classes.tabs}
 									component={Link}
 									to='/projects'
 									label='Projects'
+									index={1}
 								/>
 								<Tab
 									className={classes.tabs}
 									component={Link}
 									to='/about'
 									label='About'
+									index={2}
 								/>
 								<Tab
 									className={classes.tabs}
 									component={Link}
 									to='/contact'
 									label='Contact'
+									index={3}
 								/>
 							</Tabs>
 						)}
