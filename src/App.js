@@ -1,10 +1,6 @@
 import "./App.css";
-import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
-import ContactPage from "./pages/ContactPage";
-import AboutPage from "./pages/AboutPage";
-import ProjectsPage from "./pages/ProjectsPage";
+import Homepage from "./pages/Homepage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
@@ -29,20 +25,9 @@ function App() {
 				<Navbar />
 				<Switch>
 					<Route exact path='/'>
-						<HomePage />
-					</Route>
-					<Route exact path='/projects'>
-						<ProjectsPage />
-					</Route>
-
-					<Route exact path='/about'>
-						<AboutPage />
-					</Route>
-					<Route exact path='/contact'>
-						<ContactPage />
+						<Homepage />
 					</Route>
 				</Switch>
-				<Footer />
 			</Router>
 		</ThemeProvider>
 	);

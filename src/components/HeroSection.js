@@ -1,0 +1,82 @@
+import React from "react";
+
+import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+
+import { Link } from "react-router-dom";
+
+import selfie from "../images/profile.jpg";
+
+const useStyles = makeStyles((theme) => ({
+	heroSection: {
+		minHeight: "600px",
+	},
+	welcomeSection: {
+		margin: "auto",
+		height: "350px",
+		[theme.breakpoints.down("sm")]: {
+			maxWidth: "400px",
+			margin: "50px auto 25px auto",
+		},
+	},
+	image: {
+		width: "400px",
+		objectFit: "contain",
+		margin: "auto",
+		[theme.breakpoints.down("sm")]: {
+			width: "288px",
+			objectFit: "contain",
+			margin: "25px 0 50px 0",
+		},
+	},
+}));
+
+const HeroSection = () => {
+	const classes = useStyles();
+	const theme = useTheme();
+	const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
+	return (
+		<Grid className={classes.heroSection} container>
+			<Grid
+				className={classes.welcomeSection}
+				item
+				container
+				justify='space-around'
+				alignItems='center'
+				direction='column'
+				md={6}>
+				<Grid item>
+					<Typography variant={matches ? "h4" : "h3"}>Welcome!</Typography>
+				</Grid>
+				<Grid item>
+					<Typography align='center' variant='subtitle1'>
+						My name is Caolan Fanning and this is my personal portfolio! I built
+						this website to showcase some of my skills as a web developer. Enjoy
+						your stay!
+					</Typography>
+				</Grid>
+				<Grid item>
+					<Button
+						variant='contained'
+						color='primary'
+						size='large'
+						component={Link}
+						to='/about'>
+						Read More...
+					</Button>
+				</Grid>
+			</Grid>
+			<Grid item container alignItems='center' direction='column' md={6}>
+				<img className={classes.image} src={selfie} alt='me and steve' />
+			</Grid>
+		</Grid>
+	);
+};
+
+export default HeroSection;
