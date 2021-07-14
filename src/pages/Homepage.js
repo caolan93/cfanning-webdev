@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "#f3f3f3",
 		maxWidth: "1500px",
 		minWidth: "320px",
-		height: "1000px",
 	},
 }));
 
