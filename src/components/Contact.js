@@ -4,7 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import Container from "@material-ui/core/Container";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import SendIcon from "@material-ui/icons/Send";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import PhoneIphoneOutlinedIcon from "@material-ui/icons/PhoneIphoneOutlined";
@@ -13,58 +15,81 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
-		minHeight: "600px",
-		margin: "auto",
+		minHeight: "90vh",
+	},
+	header: {
+		margin: "50px 0 20px 0",
+		fontWeight: 700,
+		textAlign: "center",
 	},
 	contactInfo: {
-		backgroundColor: "red",
-		minHeight: "500px",
+		width: "100%",
+	},
+	contactDetailsContainer: {
+		margin: "auto",
+		height: "500px",
 		maxWidth: "400px",
+		display: "flex",
+		flexDirection: "column",
+		align: "left",
+		justifyContent: "space-around",
+	},
+	contactDetails: {
+		display: "flex",
+		alignItems: "center",
+	},
+	contactIcons: {
+		marginLeft: "50px",
+		marginRight: "50px",
+		fontSize: "32px",
+		[theme.breakpoints.down("xs")]: {
+			fontSize: "22px",
+		},
 	},
 }));
 
 const Contact = () => {
 	const classes = useStyles();
 	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
+	const matches = useMediaQuery(theme.breakpoints.down("xs"));
+
+	const contactArr = [
+		{
+			icon: PhoneIphoneOutlinedIcon,
+			info: "+(353)83-177-9545",
+		},
+		{
+			icon: EmailOutlinedIcon,
+			info: "caolan.fanning@gmail.com",
+		},
+		{
+			icon: LocationOnOutlinedIcon,
+			info: `D14RC97`,
+		},
+	];
 
 	return (
 		<Grid container className={classes.container}>
-			<Grid className={classes.contactInfo} item container md={6}>
-				<Grid item>
-					<Typography variant='h3'>CONTACT INFO</Typography>
-				</Grid>
-				<Grid item container alignItems='center' justify='space-between'>
-					<Grid item>
-						<PhoneIphoneOutlinedIcon />
-					</Grid>
-					<Grid item>
-						<Typography variant='h6'>083-177-9545</Typography>
-					</Grid>
-				</Grid>
-				<Grid item container alignItems='center' justify='space-between'>
-					<Grid item>
-						<EmailOutlinedIcon />
-					</Grid>
-					<Grid item>
-						<Typography variant='h6'>caolan.fanning@gmail.com</Typography>
-					</Grid>
-				</Grid>
-				<Grid item container alignItems='center' justify='space-between'>
-					<Grid item>
-						<LocationOnOutlinedIcon />
-					</Grid>
-					<Grid item>
-						<Typography variant='h6'>
-							Dúnaras, <br /> Whitehall Road, <br /> Churchtown, <br /> Dublin
-							14.
-						</Typography>
-					</Grid>
-				</Grid>
-			</Grid>
 			<Grid item container md={6}>
-				<Typography variant='h3'>Get In Touch!</Typography>
+				<div className={classes.contactInfo}>
+					<Typography
+						className={classes.header}
+						variant={matches ? "h4" : "h3"}>
+						GET IN TOUCH
+					</Typography>
+					<div className={classes.contactDetailsContainer}>
+						{contactArr.map((contact) => (
+							<div className={classes.contactDetails}>
+								<contact.icon className={classes.contactIcons} />
+								<Typography variant={matches ? "subtitle1" : "h6"}>
+									{contact.info}
+								</Typography>
+							</div>
+						))}
+					</div>
+				</div>
 			</Grid>
+			<Grid item container md={6}></Grid>
 		</Grid>
 	);
 };

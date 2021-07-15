@@ -10,7 +10,6 @@ import Contact from "../components/Contact";
 const useStyles = makeStyles((theme) => ({
 	container: {
 		backgroundColor: "#f3f3f3",
-		height: "800px",
 		maxWidth: "1500px",
 		minWidth: "320px",
 	},
