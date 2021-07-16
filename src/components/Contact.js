@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 		textAlign: "center",
 	},
 	contactInfo: {
+		margin: "auto",
 		width: "100%",
 	},
 	contactDetailsContainer: {
@@ -39,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 	},
 	contactIcons: {
-		marginLeft: "50px",
 		marginRight: "50px",
 		fontSize: "32px",
 		[theme.breakpoints.down("xs")]: {
@@ -70,26 +70,53 @@ const Contact = () => {
 
 	return (
 		<Grid container className={classes.container}>
-			<Grid item container md={6}>
-				<div className={classes.contactInfo}>
-					<Typography
-						className={classes.header}
-						variant={matches ? "h4" : "h3"}>
-						GET IN TOUCH
-					</Typography>
-					<div className={classes.contactDetailsContainer}>
-						{contactArr.map((contact) => (
-							<div className={classes.contactDetails}>
-								<contact.icon className={classes.contactIcons} />
-								<Typography variant={matches ? "subtitle1" : "h6"}>
-									{contact.info}
-								</Typography>
-							</div>
-						))}
+			<Grid item container style={{ margin: "50px auto" }}>
+				<Grid item container md={6}>
+					<div className={classes.contactInfo}>
+						<Typography
+							className={classes.header}
+							variant={matches ? "h4" : "h3"}>
+							GET IN TOUCH
+						</Typography>
+						<div className={classes.contactDetailsContainer}>
+							{contactArr.map((contact) => (
+								<div className={classes.contactDetails}>
+									<contact.icon className={classes.contactIcons} />
+									<Typography variant={matches ? "subtitle1" : "h6"}>
+										{contact.info}
+									</Typography>
+								</div>
+							))}
+						</div>
 					</div>
-				</div>
+				</Grid>
+				<Grid item container md={6}>
+					<div className={classes.contactInfo}>
+						<Typography
+							className={classes.header}
+							variant={matches ? "h4" : "h3"}>
+							SEND A MESSAGE!
+						</Typography>
+						<form className={classes.contactDetailsContainer}>
+							<TextField variant='outlined' label='Name' />
+							<TextField variant='outlined' label='Phone' />
+							<TextField variant='outlined' label='Email' />
+							<TextField
+								variant='outlined'
+								multiline
+								rows={10}
+								label='Message'
+							/>
+							<Button
+								color='primary'
+								variant='contained'
+								endIcon={<SendIcon />}>
+								Send
+							</Button>
+						</form>
+					</div>
+				</Grid>
 			</Grid>
-			<Grid item container md={6}></Grid>
 		</Grid>
 	);
 };
