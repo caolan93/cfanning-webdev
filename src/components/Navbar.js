@@ -21,6 +21,7 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import FolderRoundedIcon from "@material-ui/icons/FolderRounded";
 import ImportContactsRoundedIcon from "@material-ui/icons/ImportContactsRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
+import CloseIcon from "@material-ui/icons/Close";
 
 function ElevationScroll(props) {
 	const { children, window } = props;
@@ -134,7 +135,7 @@ const Navbar = () => {
 							<IconButton
 								className={classes.menuIcon}
 								onClick={handleDrawerChange}>
-								<MenuIcon />
+								{open ? <CloseIcon /> : <MenuIcon />}
 							</IconButton>
 						) : (
 							<Tabs

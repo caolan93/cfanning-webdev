@@ -7,6 +7,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Container from "@material-ui/core/Container";
 import HeroSection from "../components/HeroSection";
 import Technologies from "../components/Technologies";
+import Projects from "../components/Projects";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -25,6 +26,7 @@ const HomePage = () => {
 		<Container className={classes.container}>
 			<HeroSection />
 			<Technologies />
+			<Projects />
 		</Container>
 	);
 };
