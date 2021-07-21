@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -42,11 +44,14 @@ const Photos = ({ images }) => {
 						<Carousel>
 							{images.map((image) => (
 								<>
-									<img
-										className={classes.image}
-										key={images.indexOf(image.img)}
-										src={image.img}
-									/>
+									<a href={image.link} target='_blank'>
+										<img
+											className={classes.image}
+											key={images.indexOf(image.img)}
+											src={image.img}
+										/>
+									</a>
+
 									<Typography className={classes.title} variant='subtitle1'>
 										{image.name}
 									</Typography>
@@ -60,7 +65,12 @@ const Photos = ({ images }) => {
 					<Grid item container justify='center' align='center'>
 						{images.map((image) => (
 							<Grid item xs={12} md={6} lg={3}>
-								<Grid item xs={12}>
+								<Grid
+									component={Link}
+									to={{ pathname: image.link }}
+									target='_blank'
+									item
+									xs={12}>
 									<img
 										className={classes.image}
 										src={image.img}

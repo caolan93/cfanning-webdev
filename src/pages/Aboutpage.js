@@ -8,10 +8,10 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 
-import brad from "../images/brad.png";
-import ania from "../images/ania.png";
-import deved from "../images/deved.png";
-import sonny from "../images/sonny.png";
+import brad from "../images/brad.jpeg";
+import ania from "../images/ania.jpeg";
+import deved from "../images/deved.jpeg";
+import sonny from "../images/sonny.jpeg";
 
 import youtube from "../images/youtube.png";
 import stack from "../images/stack.png";
@@ -25,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: "320px",
 	},
 	div: {
+		paddingBottom: "50px",
+	},
+	title: {
 		padding: "50px 0",
+		fontWeight: 700,
 	},
 }));
 
@@ -34,21 +38,44 @@ const Aboutpage = () => {
 	const theme = useTheme();
 
 	const profilers = [
-		{ img: brad, name: "Brad Traversy" },
-		{ img: ania, name: "Ania Kubów" },
-		{ img: deved, name: "Dev Ed" },
-		{ img: sonny, name: "Sonny Sangha" },
+		{
+			img: brad,
+			name: "Brad Traversy",
+			link: "https://www.youtube.com/user/TechGuyWeb",
+		},
+		{
+			img: ania,
+			name: "Ania Kubów",
+			link: "https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw",
+		},
+		{
+			img: deved,
+			name: "Dev Ed",
+			link: "https://www.youtube.com/c/DevEd/featured",
+		},
+		{
+			img: sonny,
+			name: "Sonny Sangha",
+			link: "https://www.youtube.com/user/ssangha32",
+		},
 	];
 	const logos = [
-		{ img: youtube, name: "Youtube" },
-		{ img: stack, name: "StackOverFlow" },
-		{ img: freecodecamp, name: "FreeCodeCamp" },
-		{ img: udemy, name: "Udemy" },
+		{ img: youtube, name: "Youtube", link: "https://www.youtube.com/" },
+		{ img: stack, name: "StackOverFlow", link: "https://stackoverflow.com/" },
+		{
+			img: freecodecamp,
+			name: "FreeCodeCamp",
+			link: "https://www.freecodecamp.org/",
+		},
+		{ img: udemy, name: "Udemy", link: "https://www.udemy.com/" },
 	];
 
 	return (
 		<Container className={classes.container}>
 			<div className={classes.div}>
+				<Typography className={classes.title} variant='h3'>
+					About Me..
+				</Typography>
 				<Typography variant='subtitle1'>
 					While obtaining my Mathematical Science Degree from T.U.D I attended a
 					computer programming module which based around the programming
@@ -94,6 +121,7 @@ const Aboutpage = () => {
 					I have a great passion for learning and building projects. I'm
 					focused, driven and I would love an opportunity to learn and grow not
 					just as a developer but as a person.
+					<br />
 					<br />
 					Thanks for reading!
 					<br /> Yours Sincerely, <br /> Caolan.
