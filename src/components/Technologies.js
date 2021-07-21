@@ -27,9 +27,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	techTalk: {
 		margin: "auto",
+		padding: "0 30px",
+		height: "450px",
 		[theme.breakpoints.down("sm")]: {
 			maxWidth: "400px",
 			margin: "50px auto 25px auto",
+			padding: "5px",
 		},
 	},
 	techLogo: {
@@ -42,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 		height: "450px",
 		[theme.breakpoints.down("sm")]: {
 			maxWidth: "400px",
-			margin: "50px auto 25px auto",
+			margin: "50px auto 0px auto",
 		},
 	},
 }));
@@ -72,7 +75,7 @@ const Technologies = () => {
 			<Grid
 				className={classes.grid}
 				justify='center'
-				alignItems='center'
+				alignItems='flex-start'
 				item
 				container
 				md={6}>

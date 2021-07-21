@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
 			margin: "25px 0 50px 0",
 		},
 	},
+	title: {
+		fontWeight: 700,
+	},
 }));
 
 const HeroSection = () => {
@@ -52,7 +55,9 @@ const HeroSection = () => {
 				direction='column'
 				md={6}>
 				<Grid item>
-					<Typography variant={matches ? "h4" : "h3"}>Welcome!</Typography>
+					<Typography className={classes.title} variant={matches ? "h4" : "h3"}>
+						Welcome!
+					</Typography>
 				</Grid>
 				<Grid item>
 					<Typography align='center' variant='subtitle1'>

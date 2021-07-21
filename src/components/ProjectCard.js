@@ -1,6 +1,8 @@
 import { Title } from "@material-ui/icons";
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -59,7 +61,11 @@ const ProjectCard = ({ title, image, description }) => {
 						{description}
 					</Typography>
 					<div className={classes.btn}>
-						<Button variant='contained' color='primary'>
+						<Button
+							component={Link}
+							to='/projects'
+							variant='contained'
+							color='primary'>
 							View Project
 						</Button>
 					</div>
