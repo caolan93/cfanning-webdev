@@ -6,7 +6,6 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Footer from "./components/Footer";
 import Contactpage from "./pages/Contactpage";
 import Aboutpage from "./pages/Aboutpage";
-import Projectspage from "./pages/Projectspage";
 
 const theme = createMuiTheme({
 	palette: {
@@ -36,9 +35,6 @@ function App() {
 					</Route>
 					<Route exact path='/contact'>
 						<Contactpage />
-					</Route>
-					<Route exact path='/projects'>
-						<Projectspage />
 					</Route>
 				</Switch>
 				<Footer />

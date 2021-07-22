@@ -98,19 +98,14 @@ const Navbar = () => {
 					setValue(0);
 				}
 				break;
-			case "/projects":
+			case "/about":
 				if (value !== 1) {
 					setValue(1);
 				}
 				break;
-			case "/about":
+			case "/contact":
 				if (value !== 2) {
 					setValue(2);
-				}
-				break;
-			case "/contact":
-				if (value !== 3) {
-					setValue(3);
 				}
 				break;
 			default:
@@ -152,23 +147,16 @@ const Navbar = () => {
 								<Tab
 									className={classes.tabs}
 									component={Link}
-									to='/projects'
-									label='Projects'
-									index={1}
-								/>
-								<Tab
-									className={classes.tabs}
-									component={Link}
 									to='/about'
 									label='About'
-									index={2}
+									index={1}
 								/>
 								<Tab
 									className={classes.tabs}
 									component={Link}
 									to='/contact'
 									label='Contact'
-									index={3}
+									index={2}
 								/>
 							</Tabs>
 						)}
@@ -195,30 +183,16 @@ const Navbar = () => {
 						</ListItemIcon>
 						<ListItemText className={classes.drawerItem} primary='Home' />
 					</ListItem>
-					<Divider className={classes.divider} />
-					<ListItem
-						component={Link}
-						to='/projects'
-						onClick={() => {
-							setOpen(false);
-							setValue(1);
-						}}
-						selected={value === 1}
-						button>
-						<ListItemIcon>
-							<FolderRoundedIcon className={classes.drawerIcon} />
-						</ListItemIcon>
-						<ListItemText className={classes.drawerItem} primary='Projects' />
-					</ListItem>
+
 					<Divider className={classes.divider} />
 					<ListItem
 						component={Link}
 						to='/about'
 						onClick={() => {
 							setOpen(false);
-							setValue(2);
+							setValue(1);
 						}}
-						selected={value === 2}
+						selected={value === 1}
 						button>
 						<ListItemIcon>
 							<AccountBoxRoundedIcon className={classes.drawerIcon} />
@@ -231,9 +205,9 @@ const Navbar = () => {
 						to='/contact'
 						onClick={() => {
 							setOpen(false);
-							setValue(3);
+							setValue(2);
 						}}
-						selected={value === 3}
+						selected={value === 2}
 						button>
 						<ListItemIcon>
 							<ImportContactsRoundedIcon className={classes.drawerIcon} />

@@ -25,6 +25,7 @@ const Projects = () => {
 				<ProjectCard
 					title='Proshop'
 					image={proshoptn}
+					pathname='https://proshop-mernapp.herokuapp.com/'
 					description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
 								quae aperiam facere harum minus quo nostrum quam iusto voluptate
 								aspernatur, et numquam asperiores doloribus quidem error, alias
@@ -35,6 +36,7 @@ const Projects = () => {
 				<ProjectCard
 					title='Proshop'
 					image={proshoptn}
+					pathname='https://proshop-mernapp.herokuapp.com/'
 					description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
 								quae aperiam facere harum minus quo nostrum quam iusto voluptate
 								aspernatur, et numquam asperiores doloribus quidem error, alias
