@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Contactpage from "./pages/Contactpage";
 import Aboutpage from "./pages/Aboutpage";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 const theme = createMuiTheme({
 	palette: {
 		primary: {
@@ -26,6 +28,7 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<Router>
 				<Navbar />
+				<ScrollToTop />
 				<Switch>
 					<Route exact path='/'>
 						<Homepage />
