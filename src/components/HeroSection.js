@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -55,7 +56,15 @@ const HeroSection = () => {
 				direction='column'
 				md={6}>
 				<Grid item>
-					<Typography className={classes.title} variant={matches ? "h4" : "h3"}>
+					<Typography
+						component={matches ? "motion.h4" : "motion.h3"}
+						className={classes.title}
+						initial={{ y: -400, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{
+							duration: 1,
+						}}
+						variant={matches ? "h4" : "h3"}>
 						Welcome!
 					</Typography>
 				</Grid>

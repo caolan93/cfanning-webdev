@@ -52,7 +52,6 @@ const ProjectCard = ({ title, image, description, pathname }) => {
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
-		console.log(pathname);
 	};
 
 	return (
@@ -60,7 +59,6 @@ const ProjectCard = ({ title, image, description, pathname }) => {
 			<div className={classes.paper}>
 				<Card
 					style={{
-						height: "100%",
 						padding: "20px",
 					}}>
 					<Typography align='center' variant='h5'>
@@ -70,7 +68,7 @@ const ProjectCard = ({ title, image, description, pathname }) => {
 					<Typography align='center' variant='subtitle1'>
 						{description}
 					</Typography>
-					<Collapse in={expanded} timeout='auto' unmountOnExit>
+					<Collapse in={expanded}>
 						<Typography variant='subtitle1' align='center'>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 							Cupiditate quae beatae, consectetur repellat a laboriosam nihil
