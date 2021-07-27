@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
+import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -15,13 +16,32 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const projectVariants = {
+	hidden: {
+		opacity: 0,
+		x: -500,
+	},
+	visible: {
+		opacity: [0, 0.2, 0.4, 0.6, 0.8, 1],
+		transition: { duration: 1 },
+		x: 0,
+	},
+};
+
 const Projects = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 	return (
 		<Grid container>
-			<Grid item container className={classes.projectContainer}>
+			<Grid
+				component={motion.div}
+				variants={projectVariants}
+				initial='hidden'
+				animate='visible'
+				item
+				container
+				className={classes.projectContainer}>
 				<ProjectCard
 					title='Proshop'
 					image={proshoptn}

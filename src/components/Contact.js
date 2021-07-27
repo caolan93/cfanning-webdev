@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -48,6 +49,18 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const contactAnim = {
+	hidden: {
+		opacity: 0,
+		scale: 0.1,
+	},
+	visible: {
+		opacity: [0.2, 0.4, 0.6, 0.8, 2],
+		scale: [0.4, 1],
+		transition: { duration: 0.75 },
+	},
+};
+
 const Contact = () => {
 	const classes = useStyles();
 	const theme = useTheme();
@@ -70,7 +83,14 @@ const Contact = () => {
 
 	return (
 		<Grid container className={classes.container}>
-			<Grid item container style={{ margin: "50px auto" }}>
+			<Grid
+				component={motion.div}
+				variants={contactAnim}
+				initial='hidden'
+				animate='visible'
+				item
+				container
+				style={{ margin: "50px auto" }}>
 				<Grid item container md={6}>
 					<div className={classes.contactInfo}>
 						<Typography
@@ -90,7 +110,14 @@ const Contact = () => {
 						</div>
 					</div>
 				</Grid>
-				<Grid item container md={6}>
+				<Grid
+					component={motion.div}
+					variants={contactAnim}
+					initial='hidden'
+					animate='visible'
+					item
+					container
+					md={6}>
 					<div className={classes.contactInfo}>
 						<Typography
 							className={classes.header}

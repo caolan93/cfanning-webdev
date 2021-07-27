@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -50,6 +51,27 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+		x: 0,
+		transition: { staggerChildren: 0.2 },
+	},
+};
+const listVariants = {
+	hidden: {
+		opacity: 0,
+		x: -500,
+	},
+	visible: {
+		opacity: 1,
+		x: 0,
+	},
+};
+
 const Technologies = () => {
 	const classes = useStyles();
 	const theme = useTheme();
@@ -74,6 +96,10 @@ const Technologies = () => {
 		<Grid container className={classes.technologySection}>
 			<Grid
 				className={classes.grid}
+				variants={containerVariants}
+				component={motion.div}
+				initial='hidden'
+				animate='visible'
 				justify='center'
 				alignItems='flex-start'
 				item
@@ -81,6 +107,8 @@ const Technologies = () => {
 				md={6}>
 				{logoArr.map((logo) => (
 					<Grid
+						component={motion.div}
+						variants={listVariants}
 						key={logo}
 						style={{
 							display: "flex",
@@ -89,11 +117,24 @@ const Technologies = () => {
 						}}
 						xs={4}
 						item>
-						<img className={classes.techLogo} src={logo} alt='html logo' />
+						<motion.img
+							className={classes.techLogo}
+							src={logo}
+							alt='html logo'
+						/>
 					</Grid>
 				))}
 			</Grid>
-			<Grid className={classes.techTalk} item container md={6}>
+			<Grid
+				component={motion.div}
+				className={classes.techTalk}
+				variants={listVariants}
+				initial='hidden'
+				animate='visible'
+				transition={{ delay: 1.2 }}
+				item
+				container
+				md={6}>
 				<Typography align={matches ? "center" : "left"} variant='subtitle1'>
 					When I began my webdev journey in Summer 2020, I started with the
 					basics of HTML, CSS and JavaScript.

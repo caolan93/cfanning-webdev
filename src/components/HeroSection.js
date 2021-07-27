@@ -40,13 +40,31 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const titleVariants = {
+	hidden: {
+		opacity: 0,
+		y: 500,
+	},
+	show: {
+		opacity: [0.25, 0.5, 0.75, 1],
+		y: 0,
+		transition: { duration: 0.75 },
+	},
+};
+
 const HeroSection = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
-		<Grid className={classes.heroSection} container>
+		<Grid
+			component={motion.div}
+			variants={titleVariants}
+			initial='hidden'
+			animate='show'
+			className={classes.heroSection}
+			container>
 			<Grid
 				className={classes.welcomeSection}
 				item
@@ -57,13 +75,8 @@ const HeroSection = () => {
 				md={6}>
 				<Grid item>
 					<Typography
-						component={matches ? "motion.h4" : "motion.h3"}
+						component={matches ? motion.h4 : motion.h3}
 						className={classes.title}
-						initial={{ y: -400, opacity: 0 }}
-						animate={{ y: 0, opacity: 1 }}
-						transition={{
-							duration: 1,
-						}}
 						variant={matches ? "h4" : "h3"}>
 						Welcome!
 					</Typography>

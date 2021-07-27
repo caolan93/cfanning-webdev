@@ -1,5 +1,6 @@
 import React from "react";
 import Photos from "../components/Photos";
+import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -72,7 +73,14 @@ const Aboutpage = () => {
 
 	return (
 		<Container className={classes.container}>
-			<div className={classes.div}>
+			<motion.div
+				initial={{ opacity: 0, y: 500 }}
+				animate={{
+					opacity: [0.2, 0.4, 0.6, 0.8, 1],
+					y: 0,
+					transition: { duration: 0.75 },
+				}}
+				className={classes.div}>
 				<Typography className={classes.title} variant='h3'>
 					About Me..
 				</Typography>
@@ -126,7 +134,7 @@ const Aboutpage = () => {
 					Thanks for reading!
 					<br /> Yours Sincerely, <br /> Caolan.
 				</Typography>
-			</div>
+			</motion.div>
 		</Container>
 	);
 };
