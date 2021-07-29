@@ -47,7 +47,7 @@ const Photos = ({ images }) => {
 									<a href={image.link} target='_blank'>
 										<img
 											className={classes.image}
-											key={images.indexOf(image.img)}
+											key={image.key}
 											src={image.img}
 										/>
 									</a>

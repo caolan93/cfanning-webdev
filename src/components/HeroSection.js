@@ -15,7 +15,7 @@ import selfie from "../images/profile.jpg";
 
 const useStyles = makeStyles((theme) => ({
 	heroSection: {
-		minHeight: "600px",
+		minHeight: "100vh",
 	},
 	welcomeSection: {
 		margin: "auto",

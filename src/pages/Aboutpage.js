@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -36,39 +35,48 @@ const useStyles = makeStyles((theme) => ({
 
 const Aboutpage = () => {
 	const classes = useStyles();
-	const theme = useTheme();
 
 	const profilers = [
 		{
+			key: 1,
 			img: brad,
 			name: "Brad Traversy",
 			link: "https://www.youtube.com/user/TechGuyWeb",
 		},
 		{
+			key: 2,
 			img: ania,
 			name: "Ania Kubów",
 			link: "https://www.youtube.com/channel/UC5DNytAJ6_FISueUfzZCVsw",
 		},
 		{
+			key: 3,
 			img: deved,
 			name: "Dev Ed",
 			link: "https://www.youtube.com/c/DevEd/featured",
 		},
 		{
+			key: 4,
 			img: sonny,
 			name: "Sonny Sangha",
 			link: "https://www.youtube.com/user/ssangha32",
 		},
 	];
 	const logos = [
-		{ img: youtube, name: "Youtube", link: "https://www.youtube.com/" },
-		{ img: stack, name: "StackOverFlow", link: "https://stackoverflow.com/" },
+		{ key: 5, img: youtube, name: "Youtube", link: "https://www.youtube.com/" },
 		{
+			key: 6,
+			img: stack,
+			name: "StackOverFlow",
+			link: "https://stackoverflow.com/",
+		},
+		{
+			key: 7,
 			img: freecodecamp,
 			name: "FreeCodeCamp",
 			link: "https://www.freecodecamp.org/",
 		},
-		{ img: udemy, name: "Udemy", link: "https://www.udemy.com/" },
+		{ key: 8, img: udemy, name: "Udemy", link: "https://www.udemy.com/" },
 	];
 
 	return (

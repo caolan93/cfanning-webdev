@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -7,7 +8,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 
 import html from "../images/html.png";
 import js from "../images/js.png";
@@ -24,7 +24,7 @@ import redux from "../images/redux.png";
 
 const useStyles = makeStyles((theme) => ({
 	technologySection: {
-		minHeight: "600px",
+		minHeight: "100vh",
 	},
 	techTalk: {
 		margin: "auto",
@@ -77,6 +77,8 @@ const Technologies = () => {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
+	const { ref, inView } = useInView();
+
 	const logoArr = [
 		html,
 		js,
@@ -109,7 +111,7 @@ const Technologies = () => {
 					<Grid
 						component={motion.div}
 						variants={listVariants}
-						key={logo}
+						key={logoArr.indexOf(logo)}
 						style={{
 							display: "flex",
 							alignItems: "center",
