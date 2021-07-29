@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
+
+import { USER_ID, TEMPLATE_ID, SERVICE_ID } from "../emailjs";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -66,6 +69,14 @@ const Contact = () => {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
+	const [name, setName] = useState("");
+	const [phone, setPhone] = useState(0);
+	const [email, setEmail] = useState("");
+	const [message, setMessage] = useState("");
+
+	const [emailSuccess, setEmailSuccess] = useState(false);
+	const [emailFailure, setEmailFailure] = useState(false);
+
 	const contactArr = [
 		{
 			icon: PhoneIphoneOutlinedIcon,
@@ -81,6 +92,27 @@ const Contact = () => {
 		},
 	];
 
+	const templateParams = {
+		name,
+		phone,
+		email,
+		setMessage,
+	};
+
+	const sendEmail = (e) => {
+		e.preventDefault();
+
+		emailjs.send("SERVICE_ID", "TEMPLATE_ID", templateParams, "USER_ID").then(
+			(result) => {
+				setEmailSuccess(true);
+				setEmailFailure(false);
+			},
+			(error) => {
+				setEmailSuccess(false);
+				setEmailFailure(true);
+			}
+		);
+	};
 	return (
 		<Grid container className={classes.container}>
 			<Grid
@@ -125,18 +157,37 @@ const Contact = () => {
 							SEND A MESSAGE!
 						</Typography>
 						<form className={classes.contactDetailsContainer}>
-							<TextField variant='outlined' label='Name' />
-							<TextField variant='outlined' label='Phone' />
-							<TextField variant='outlined' label='Email' />
+							<TextField
+								variant='outlined'
+								label='Name'
+								name={name}
+								onChange={(e) => setName(e.target.value)}
+							/>
+							<TextField
+								variant='outlined'
+								label='Phone'
+								name={phone}
+								onChange={(e) => setPhone(e.target.value)}
+							/>
+							<TextField
+								variant='outlined'
+								label='Email'
+								name={email}
+								onChange={(e) => setEmail(e.target.value)}
+							/>
 							<TextField
 								variant='outlined'
 								multiline
 								rows={10}
 								label='Message'
+								name={message}
+								onChange={(e) => setMessage(e.target.value)}
 							/>
 							<Button
 								color='primary'
 								variant='contained'
+								type='submit'
+								onClick={sendEmail}
 								endIcon={<SendIcon />}>
 								Send
 							</Button>
