@@ -1,5 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -42,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
 
 const titleVariants = {
 	hidden: {
+		scale: 0.5,
 		opacity: 0,
-		y: 500,
 	},
-	show: {
+	visible: {
+		scale: 1,
 		opacity: [0.25, 0.5, 0.75, 1],
-		y: 0,
 		transition: { duration: 0.75 },
 	},
 };
@@ -57,12 +58,26 @@ const HeroSection = () => {
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
+	const { ref, inView } = useInView();
+
+	const animation = useAnimation();
+
+	useEffect(() => {
+		if (inView) {
+			animation.start("visible");
+		}
+		if (!inView) {
+			animation.start("hidden");
+		}
+	}, [animation, inView]);
+
 	return (
 		<Grid
+			ref={ref}
 			component={motion.div}
 			variants={titleVariants}
 			initial='hidden'
-			animate='show'
+			animate={animation}
 			className={classes.heroSection}
 			container>
 			<Grid

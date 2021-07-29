@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -58,7 +58,7 @@ const containerVariants = {
 	visible: {
 		opacity: 1,
 		x: 0,
-		transition: { staggerChildren: 0.2 },
+		transition: { staggerChildren: 0.15 },
 	},
 };
 const listVariants = {
@@ -79,6 +79,8 @@ const Technologies = () => {
 
 	const { ref, inView } = useInView();
 
+	const animation = useAnimation();
+
 	const logoArr = [
 		html,
 		js,
@@ -94,14 +96,24 @@ const Technologies = () => {
 		sass,
 	];
 
+	useEffect(() => {
+		if (inView) {
+			animation.start("visible");
+		}
+		if (!inView) {
+			animation.start("hidden");
+		}
+	}, [animation, inView]);
+
 	return (
 		<Grid container className={classes.technologySection}>
 			<Grid
+				ref={ref}
 				className={classes.grid}
 				variants={containerVariants}
 				component={motion.div}
 				initial='hidden'
-				animate='visible'
+				animate={animation}
 				justify='center'
 				alignItems='flex-start'
 				item
@@ -128,12 +140,13 @@ const Technologies = () => {
 				))}
 			</Grid>
 			<Grid
+				ref={ref}
 				component={motion.div}
 				className={classes.techTalk}
 				variants={listVariants}
 				initial='hidden'
-				animate='visible'
-				transition={{ delay: 1.2 }}
+				animate={animation}
+				transition={{ duration: 0.75 }}
 				item
 				container
 				md={6}>

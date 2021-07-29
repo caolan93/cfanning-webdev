@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProjectCard from "./ProjectCard";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -32,13 +33,28 @@ const Projects = () => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
+	const animation = useAnimation();
+
+	const { ref, inView } = useInView();
+
+	useEffect(() => {
+		if (inView) {
+			animation.start("visible");
+		}
+		if (!inView) {
+			animation.start("hidden");
+		}
+	}, [animation, inView]);
+
 	return (
 		<Grid container>
 			<Grid
+				ref={ref}
 				component={motion.div}
 				variants={projectVariants}
 				initial='hidden'
-				animate='visible'
+				animate={animation}
 				item
 				container
 				className={classes.projectContainer}>
