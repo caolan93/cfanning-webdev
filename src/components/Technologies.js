@@ -25,6 +25,9 @@ import redux from "../images/redux.png";
 const useStyles = makeStyles((theme) => ({
 	technologySection: {
 		minHeight: "100vh",
+		[theme.breakpoints.down("sm")]: {
+			margin: "50px 0",
+		},
 	},
 	techTalk: {
 		margin: "auto",
@@ -99,16 +102,17 @@ const Technologies = () => {
 	useEffect(() => {
 		if (inView) {
 			animation.start("visible");
+			console.log("is in view");
 		}
 		if (!inView) {
 			animation.start("hidden");
+			console.log("NOT in view");
 		}
 	}, [animation, inView]);
 
 	return (
-		<Grid container className={classes.technologySection}>
+		<Grid ref={ref} container className={classes.technologySection}>
 			<Grid
-				ref={ref}
 				className={classes.grid}
 				variants={containerVariants}
 				component={motion.div}

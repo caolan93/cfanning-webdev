@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 		[theme.breakpoints.down("xs")]: {
 			marginTop: "56px",
+			width: "50%",
 		},
 		backgroundColor: theme.palette.primary.main,
 	},

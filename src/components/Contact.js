@@ -70,7 +70,7 @@ const Contact = () => {
 	const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
 	const [name, setName] = useState("");
-	const [phone, setPhone] = useState(0);
+	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 
@@ -96,16 +96,20 @@ const Contact = () => {
 		name,
 		phone,
 		email,
-		setMessage,
+		message,
 	};
 
 	const sendEmail = (e) => {
 		e.preventDefault();
 
-		emailjs.send("SERVICE_ID", "TEMPLATE_ID", templateParams, "USER_ID").then(
+		emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID).then(
 			(result) => {
 				setEmailSuccess(true);
-				setEmailFailure(false);
+				setEmailFailure(true);
+				setName("");
+				setPhone("");
+				setEmail("");
+				setMessage("");
 			},
 			(error) => {
 				setEmailSuccess(false);
@@ -154,44 +158,57 @@ const Contact = () => {
 						<Typography
 							className={classes.header}
 							variant={matches ? "h4" : "h3"}>
-							SEND A MESSAGE!
+							{emailFailure ? "SEND MESSAGE ERROR" : "SEND A MESSAGE!"}
 						</Typography>
-						<form className={classes.contactDetailsContainer}>
-							<TextField
-								variant='outlined'
-								label='Name'
-								name={name}
-								onChange={(e) => setName(e.target.value)}
-							/>
-							<TextField
-								variant='outlined'
-								label='Phone'
-								name={phone}
-								onChange={(e) => setPhone(e.target.value)}
-							/>
-							<TextField
-								variant='outlined'
-								label='Email'
-								name={email}
-								onChange={(e) => setEmail(e.target.value)}
-							/>
-							<TextField
-								variant='outlined'
-								multiline
-								rows={10}
-								label='Message'
-								name={message}
-								onChange={(e) => setMessage(e.target.value)}
-							/>
-							<Button
-								color='primary'
-								variant='contained'
-								type='submit'
-								onClick={sendEmail}
-								endIcon={<SendIcon />}>
-								Send
-							</Button>
-						</form>
+						{emailSuccess ? (
+							<Typography
+								className={classes.contactDetailsContainer}
+								align='center'
+								variant='h4'>
+								Message Sent!
+							</Typography>
+						) : (
+							<form className={classes.contactDetailsContainer}>
+								<TextField
+									variant='outlined'
+									label='Name'
+									value={name}
+									name='name'
+									onChange={(e) => setName(e.target.value)}
+								/>
+								<TextField
+									variant='outlined'
+									label='Phone'
+									value={phone}
+									name='phone'
+									onChange={(e) => setPhone(e.target.value)}
+								/>
+								<TextField
+									variant='outlined'
+									label='Email'
+									value={email}
+									name='email'
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<TextField
+									variant='outlined'
+									multiline
+									rows={10}
+									label='Message'
+									value={message}
+									name='message'
+									onChange={(e) => setMessage(e.target.value)}
+								/>
+								<Button
+									color='primary'
+									variant='contained'
+									type='submit'
+									onClick={sendEmail}
+									endIcon={<SendIcon />}>
+									Send
+								</Button>
+							</form>
+						)}
 					</div>
 				</Grid>
 			</Grid>

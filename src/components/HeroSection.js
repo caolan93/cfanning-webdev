@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	image: {
 		width: "400px",
+		zIndex: "10",
 		objectFit: "contain",
 		margin: "auto",
 		[theme.breakpoints.down("sm")]: {

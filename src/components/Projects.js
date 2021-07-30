@@ -48,9 +48,8 @@ const Projects = () => {
 	}, [animation, inView]);
 
 	return (
-		<Grid container>
+		<Grid ref={ref} container>
 			<Grid
-				ref={ref}
 				component={motion.div}
 				variants={projectVariants}
 				initial='hidden'
