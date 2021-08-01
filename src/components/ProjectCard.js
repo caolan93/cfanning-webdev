@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -45,8 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectCard = ({ title, image, description, pathname }) => {
 	const classes = useStyles();
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const [expanded, setExpanded] = useState(false);
 

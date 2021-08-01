@@ -102,11 +102,9 @@ const Technologies = () => {
 	useEffect(() => {
 		if (inView) {
 			animation.start("visible");
-			console.log("is in view");
 		}
 		if (!inView) {
-			animation.start("hidden");
-			console.log("NOT in view");
+			animation.start("hidden");]
 		}
 	}, [animation, inView]);
 

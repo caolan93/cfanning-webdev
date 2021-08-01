@@ -1,8 +1,6 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Container from "@material-ui/core/Container";
 import Contact from "../components/Contact";
@@ -17,8 +15,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Contactpage = () => {
 	const classes = useStyles();
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
 		<Container className={classes.container}>

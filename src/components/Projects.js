@@ -4,8 +4,6 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Grid from "@material-ui/core/Grid";
 
@@ -31,8 +29,6 @@ const projectVariants = {
 
 const Projects = () => {
 	const classes = useStyles();
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const animation = useAnimation();
 

@@ -44,11 +44,12 @@ const Photos = ({ images }) => {
 						<Carousel>
 							{images.map((image) => (
 								<>
-									<a href={image.link} target='_blank'>
+									<a href={image.link} rel='noreferrer' target='_blank'>
 										<img
 											className={classes.image}
 											key={image.key}
 											src={image.img}
+											alt={`${image.name} ${image.key}`}
 										/>
 									</a>
 
@@ -68,13 +69,14 @@ const Photos = ({ images }) => {
 								<Grid
 									component={Link}
 									to={{ pathname: image.link }}
+									rel='noreferrer'
 									target='_blank'
 									item
 									xs={12}>
 									<img
 										className={classes.image}
 										src={image.img}
-										alt={`image #${images.indexOf(image)}`}
+										alt={`${image.name} ${image.key}`}
 									/>
 								</Grid>
 								<Grid item xs={12}>

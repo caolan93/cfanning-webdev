@@ -1,9 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Container from "@material-ui/core/Container";
 import HeroSection from "../components/HeroSection";
@@ -20,8 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
 	const classes = useStyles();
-	const theme = useTheme();
-	const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
 	return (
 		<Container className={classes.container}>
