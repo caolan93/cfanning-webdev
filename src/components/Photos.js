@@ -47,7 +47,6 @@ const Photos = ({ images }) => {
 									<a href={image.link} rel='noreferrer' target='_blank'>
 										<img
 											className={classes.image}
-											key={image.key}
 											src={image.img}
 											alt={`${image.name} ${image.key}`}
 										/>
@@ -65,7 +64,7 @@ const Photos = ({ images }) => {
 				<Grid container style={{ margin: "50px 0" }}>
 					<Grid item container justify='center' align='center'>
 						{images.map((image) => (
-							<Grid item xs={12} md={6} lg={3}>
+							<Grid key={image.key} item xs={12} md={6} lg={3}>
 								<Grid
 									component={Link}
 									to={{ pathname: image.link }}
