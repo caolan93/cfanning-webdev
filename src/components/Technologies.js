@@ -104,7 +104,7 @@ const Technologies = () => {
 			animation.start("visible");
 		}
 		if (!inView) {
-			animation.start("hidden");]
+			animation.start("hidden");
 		}
 	}, [animation, inView]);
 
